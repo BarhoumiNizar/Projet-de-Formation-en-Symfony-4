@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block main %}
+ {{ form_start(form) }}
+ {{ form_label(form.date) }}
+{{ form_widget(form.date) }}
+<br>
+{{ form_label(form.etat) }}
+{{ form_widget(form.etat) }}
+<br>
+
+<br>
+<input type="submit" class="btn btn-success" value="Stock">
+ {{ form_end(form) }}
+{% endblock %}

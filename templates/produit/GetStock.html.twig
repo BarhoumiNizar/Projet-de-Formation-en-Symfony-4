@@ -1,0 +1,8 @@
+<ol>
+{% for s in stocks %}
+<li>Date : {{ s.date|date('Y-m-d') }} <br>
+  Etta : {{ s.etat }} <br>
+  </li>
+
+{% endfor %}
+</ol>

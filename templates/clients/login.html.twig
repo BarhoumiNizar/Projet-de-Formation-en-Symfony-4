@@ -1,0 +1,8 @@
+<h1>{{msg}}</h1>
+{{ form_start(form) }}{# c'est l'équivalent de <form method="post"> avec form c'est la clé retourné dans le render de la fonction" #}
+{{ form_label(form.email) }}
+{{ form_widget(form.email) }}
+{{ form_label(form.password) }}
+{{ form_widget(form.password) }}
+<input type="submit" value="Se connecter">
+{{ form_end(form,{'render_rest':false}) }}{# </form> #}

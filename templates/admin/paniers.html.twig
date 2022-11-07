@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+ {% block main %}
+ {% if paniers != null %}
+<h1> Liste des Paniers </h1>
+<table class="table table-bordered">
+<tr><th>Nom Produit</th><th>Categorie</th><th>Nom Client</th><th>Email Client</th>
+<th>Accepeter</td><th>Refuser</td></tr>
+{% for p in paniers %}
+<tr><td>{{ p.produit.NomProduit }}</td><td>{{ p.produit.categorie }}</td>
+<td>{{ p.client.nom ~' '~ p.client.prenom }}</td><td>{{ p.client.email }}</td>
+<td><a href="{{path('TraiterPanier',{'etat':'Accepter','id':p.id})}}" class="btn btn-success">Accepter</a></td>
+{# ~ c'est la concaténation en twig #}
+<td><a href="{{path('TraiterPanier',{'etat':'Refuser','id':p.id})}}" class="btn btn-danger">Refuser</a></tr>
+{% endfor %}
+</table>
+{% else  %}
+            {% if resRecherche != null %}
+                    <h1> Resultat de recherche </h1>
+                    <table class="table table-bordered">
+                    <tr><th>Nom Produit</th><th>Categorie</th><th>Prix</th></tr>
+                    {% for r in resRecherche %}
+                    <tr><td>{{ r.NomProduit }}</td><td>{{ r.categorie }}</td>
+                    <td>{{ r.prix }}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+           {% else  %}
+                <h1> Pas de resultat pour votre recherche </h1>
+        {% endif %}{## c'est le end if de if de la ligne 17 #}
+{% endif %} {## c'est le end if de if de la ligne 3 #}
+{% endblock %}

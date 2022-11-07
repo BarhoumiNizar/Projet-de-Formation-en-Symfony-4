@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block main %}
+ {{ form_start(form) }}
+ {{ form_label(form.nom_produit) }}
+{{ form_widget(form.nom_produit) }}
+<br>
+{{ form_label(form.qte) }}
+{{ form_widget(form.qte,{'attr':{'min':1,'value':10}}) }}
+<br>
+{{ form_label(form.description) }}
+{{ form_widget(form.description) }}
+<br>
+{{ form_label(form.prix) }}
+{{ form_widget(form.prix) }}
+<br>
+{{ form_label(form.reference) }}
+{{ form_widget(form.reference) }}
+<br>
+{{ form_label(form.categorie) }}
+{{ form_widget(form.categorie) }}
+<br>
+
+{{ form_label(form.photo) }}
+{{ form_widget(form.photo) }}
+<br>
+<input type="submit" class="btn btn-success" value="Ajout Produit">
+ {{ form_end(form) }}
+{% endblock %}

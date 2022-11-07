@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block main %}
+<table class="table table-bordered">
+<tr><th>Nom Produit</th><th>Categorie</th><th>Description</th><th>Quantité</th>
+<th>Image</td><th>Modifier</td></tr>
+{% for p in produits %}
+<tr><td>{{ p.NomProduit }}</td><td>{{ p.categorie }}</td>
+<td>{{ p.description }}</td><td>{{ p.Qte }}</td>
+<td><img src="{{asset('upload/'~ p.photo)}}" width=250 height=200></td>
+{# ~ c'est la concaténation en twig #}
+<td><a href="#" class="btn btn-warning">Modifier</a></tr>
+{% endfor %}
+</table>
+{% endblock %}

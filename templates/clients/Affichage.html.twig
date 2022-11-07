@@ -1,0 +1,24 @@
+{% if app.session.get('client') != null %}
+Votre nom est : <b>{{ app.session.get('client').nom }}</b><br>
+{% endif %}
+<a href="{{path('deconnexion')}}">Déconnexion</a>
+<table border=1>
+<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Email</th>
+<th>Modifier</th><th>Supprimer</th>
+</tr>
+{% if app.session.get('client') != null %}
+{% for cle in resultat %}
+{% if cle.id == app.session.get('client').id%}
+ <tr>
+ <td>{{ cle.id }}</td><td>{{ cle.nom }}</td><td>{{ cle.prenom }}</td>
+ <td>{{ cle.email }}</td>
+ <td><a href="{{path('modifier',{'id':cle.id})}}">Modifier</a></td>
+ {#  ?id_delete=<?php echo cle.id?> en php Native#}
+  <td><a href="{{path('deleteClient',{'id_delete':cle.id})}}">Supprimer</a></td>
+ {# deleteClient c'est le name de route de la fonction de suppression#}
+ {# id_delete c'est le nom de parameter de la fonction de suppression #}
+ </tr>
+ {% endif %}
+{% endfor %}
+{% endif %}
+</table>
